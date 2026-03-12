@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>משחק אבטיח האחוזים 🍉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background -->
+    <div id="bg-layer">
+        <div class="cloud" style="top:5%;left:10%;animation-delay:0s;"></div>
+        <div class="cloud" style="top:12%;right:8%;animation-delay:2s;width:80px;height:30px;"></div>
+        <div class="star" style="top:8%;left:40%;animation-delay:0.5s;">⭐</div>
+        <div class="star" style="top:15%;left:70%;animation-delay:1.2s;">🌟</div>
+        <div class="star" style="top:6%;left:20%;animation-delay:0.8s;">✨</div>
+        <div class="star" style="top:18%;right:25%;animation-delay:1.7s;">⭐</div>
+    </div>
+
+    <div id="game-container">
+        <!-- UI Layer -->
+        <div id="ui-layer">
+            <div class="top-bar">
+                <div class="score-pill">🏆 <span id="score-value">0</span></div>
+                <button id="shop-btn" class="chest-btn">🎁 פרסים</button>
+                <button id="hint-btn" class="hint-btn-top">💡 רמז (-50 CP)</button>
+            </div>
+
+            <div id="question-banner">
+                <span class="question-icon">🤔</span>
+                <div id="question-text">טוען שאלה...</div>
+            </div>
+
+            <div class="options-row" id="options-container">
+                <!-- injected by JS -->
+            </div>
+
+            <div id="drop-hint">👆 בחר תשובה וגרור למטה!</div>
+            <div id="popup-container"></div>
+        </div>
+
+        <!-- Matter.js Canvas -->
+        <div id="canvas-container"></div>
+
+        <!-- Treasure Chest Reveal -->
+        <div id="chest-overlay" class="hidden">
+            <div class="chest-rays"></div>
+            <div id="chest-box">
+                <div id="chest-emoji">🎁</div>
+                <div id="chest-title">אוצר חדש!</div>
+                <div id="chest-prize-name"></div>
+                <div id="chest-prize-emoji"></div>
+                <button id="chest-close-btn" onclick="closeChest()">🎉 יאהוו!</button>
+            </div>
+        </div>
+
+        <!-- Rewards Shop -->
+        <div id="shop-screen" class="hidden modal-overlay">
+            <div class="shop-modal">
+                <button class="close-btn" id="close-shop">✕</button>
+                <h2 class="shop-title">🛍️ חנות הפרסים</h2>
+                <div class="points-bar-wrapper">
+                    <div class="points-label">💎 הנקודות שלך: <strong><span id="shop-points">0</span></strong></div>
+                </div>
+                <div class="rewards-grid" id="rewards-grid"></div>
+            </div>
+        </div>
+
+        <!-- Game Over -->
+        <div id="game-over-screen" class="hidden modal-overlay">
+            <div class="game-over-modal">
+                <div class="game-over-emoji">😭</div>
+                <h2>המשחק נגמר!</h2>
+                <p>הגעת לניקוד: <span id="final-score">0</span></p>
+                <div class="buttons">
+                    <button id="restart-btn" class="btn primary">🔄 שחק שוב!</button>
+                    <button id="share-btn" class="btn secondary">📤 שתף!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

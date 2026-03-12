@@ -699,7 +699,7 @@ function setupCollisions(){
                         b.evaluated=true;
                         if(b.textValue===currentQuestion.answer){
                             burst(b.position.x,b.position.y,getColor(b.textValue),120);
-                            playSuccess();updateScore(500);showPraise(b.position.x,b.position.y);
+                            playSuccess();updateScore(50);showPraise(b.position.x,b.position.y);
                             b.isMerging=true;toRemove.push(b);
                             if(!toRemove.includes(other)){other.isMerging=true;toRemove.push(other);}
                             if(!isGenerating){isGenerating=true;setTimeout(()=>{generateQuestion();isGenerating=false;},800);}
@@ -797,6 +797,18 @@ window.clickChest=function(){
         
         document.getElementById('chest-prize-name').innerText = rw.name;
         
+        // Add Story if exists
+        const storyEl = document.getElementById('chest-prize-story') || document.createElement('div');
+        storyEl.id = 'chest-prize-story';
+        storyEl.style.fontSize = '1.1rem';
+        storyEl.style.marginTop = '15px';
+        storyEl.style.color = '#ffd700';
+        storyEl.style.fontStyle = 'italic';
+        storyEl.style.fontWeight = 'bold';
+        storyEl.style.textShadow = '1px 1px 2px rgba(0,0,0,0.5)';
+        storyEl.innerText = rw.story || '';
+        document.getElementById('chest-prize-name').parentElement.appendChild(storyEl);
+
         playSuccess();
         applyPrizeEffect(rw.type);
     }, 1100);
@@ -939,10 +951,12 @@ function openChestReward() {
         // Add Story if exists
         const storyEl = document.getElementById('chest-prize-story') || document.createElement('div');
         storyEl.id = 'chest-prize-story';
-        storyEl.style.fontSize = '0.95rem';
-        storyEl.style.marginTop = '10px';
+        storyEl.style.fontSize = '1.1rem';
+        storyEl.style.marginTop = '15px';
         storyEl.style.color = '#ffd700';
         storyEl.style.fontStyle = 'italic';
+        storyEl.style.fontWeight = 'bold';
+        storyEl.style.textShadow = '1px 1px 2px rgba(0,0,0,0.5)';
         storyEl.innerText = reward.story || '';
         document.getElementById('chest-prize-name').parentElement.appendChild(storyEl);
 

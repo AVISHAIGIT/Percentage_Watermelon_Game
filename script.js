@@ -70,50 +70,50 @@ function lighten(hex, a) {
 // ===== REWARDS — types: jewelry, vacation, funny, tech, food, normal =====
 const REWARDS = [
     // --- Ronit Yam Jewelry (with generated images) ---
-    { id:'ry_necklace',  emoji:'🐚', imageFile:'necklace.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'שרשרת צדף של רונית ים — כסף 925 עם תלית צדף',          price:1000 },
-    { id:'ry_bracelet',  emoji:'📿', imageFile:'bracelet.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'צמיד חרוזי ים של רונית ים — כסף וצדפות צבעוניות',      price:800  },
-    { id:'ry_ring',      emoji:'💍', imageFile:'ring.png',      type:'jewelry',  title:'טבעת יוקרתית!',      name:'טבעת כסף 925 עם ספיר ים — עיצוב אישי מרונית ים',       price:1800 },
-    { id:'ry_earrings',  emoji:'💎', imageFile:'earrings.png',  type:'jewelry',  title:'עגילים מהמם!',       name:'עגילי ים מרונית ים — כסף וחרוז ים כחול',               price:1200 },
+    { id:'ry_necklace',  emoji:'🐚', imageFile:'necklace.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'שרשרת צדף של רונית ים — כסף 925 עם תלית צדף',          price:1000, story:'הצדף הזה שמע פעם את כל הסודות של הים, אבל הוא מבטיח לא לספר אם תענדי אותו יפה.' },
+    { id:'ry_bracelet',  emoji:'📿', imageFile:'bracelet.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'צמיד חרוזי ים של רונית ים — כסף וצדפות צבעוניות',      price:800,  story:'כל חרוז כאן נצבע בנשיקה של דג זהב (אל תגלי לאף אחד).'  },
+    { id:'ry_ring',      emoji:'💍', imageFile:'ring.png',      type:'jewelry',  title:'טבעת יוקרתית!',      name:'טבעת כסף 925 עם ספיר ים — עיצוב אישי מרונית ים',       price:1800, story:'הטבעת הזו כל כך נוצצת שהיא יכולה להחליף את הפנס של האייפון שלך.' },
+    { id:'ry_earrings',  emoji:'💎', imageFile:'earrings.png',  type:'jewelry',  title:'עגילים מהמם!',       name:'עגילי ים מרונית ים — כסף וחרוז ים כחול',               price:1200, story:'כשאת עונדת אותם, את יכולה לשמוע את הגלים אפילו באמצע רחוב הרצל.' },
     // --- More Jewelry ---
-    { id:'charm',        emoji:'🐚', img:'🐚✨🐚',  type:'jewelry',  title:'תכשיט שייך לך!',   name:'קסם צדף — תליון צדף לתיק או מפתח',                     price:400  },
-    { id:'bracelet2',    emoji:'💛', img:'💛💍💛',  type:'jewelry',  title:'מתנה זהובה!',      name:'צמיד אהבה זהוב — שרשרת דקה עם לב גולד-פילד',          price:850  },
-    { id:'anklet',       emoji:'🦶', img:'🦶🌊🦶',  type:'jewelry',  title:'אלגנטי!',          name:'צמיד קרסול צדף ים — מושלם לקיץ',                       price:650  },
-    { id:'charm2',       emoji:'⚓', img:'⚓🌊⚓',  type:'jewelry',  title:'בייבי קיוט!',      name:'תכשיט עוגן כסף — קסם ימי בעיצוב ידני',                 price:550  },
-    { id:'hoop_earring', emoji:'🌙', img:'🌙💫🌙',  type:'jewelry',  title:'יפהפה!',           name:'עגילי חישוק כסף עם חרוז ירח — רונית ים',               price:960  },
+    { id:'charm',        emoji:'🐚', img:'🐚✨🐚',  type:'jewelry',  title:'תכשיט שייך לך!',   name:'קסם צדף — תליון צדף לתיק או מפתח',                     price:400,  story:'הקסם הזה מבטיח שהמפתחות שלך לעולם לא יטבעו (במובן המטאפורי).'  },
+    { id:'bracelet2',    emoji:'💛', img:'💛💍💛',  type:'jewelry',  title:'מתנה זהובה!',      name:'צמיד אהבה זהוב — שרשרת דקה עם לב גולד-פילד',          price:850,  story:'לב קטן שעושה רעש גדול של אהבה בכל פרויקט.'  },
+    { id:'anklet',       emoji:'🦶', img:'🦶🌊🦶',  type:'jewelry',  title:'אלגנטי!',          name:'צמיד קרסול צדף ים — מושלם לקיץ',                       price:650,  story:'זה צמיד הקרסול שיגרום לכל פינגווין לקנא בך.'  },
+    { id:'charm2',       emoji:'⚓', img:'⚓🌊⚓',  type:'jewelry',  title:'בייבי קיוט!',      name:'תכשיט עוגן כסף — קסם ימי בעיצוב ידני',                 price:550,  story:'עוגן קטן שיזכיר לך שתמיד יש לאן לחזור הביתה.'                 },
+    { id:'hoop_earring', emoji:'🌙', img:'🌙💫🌙',  type:'jewelry',  title:'יפהפה!',           name:'עגילי חישוק כסף עם חרוז ירח — רונית ים',               price:960,  story:'הירח מביט בך מהאוזן ושואל: "מתי הולכים לישון?"'               },
     // --- Stickers & Small ---
-    { id:'hug',          emoji:'🤗', img:'🤗😊🤗',  type:'normal',   title:'וואו!',            name:'חיבוק וירטואלי חינמי מהמשחק!',                         price:50   },
-    { id:'sticker1',     emoji:'🌊', img:'🌊🐚🌊',  type:'normal',   title:'יפה!',             name:'מדבקת גלים של רונית ים — על נייר פרמיום',              price:200  },
-    { id:'sticker2',     emoji:'🌸', img:'🌸🌺🌸',  type:'normal',   title:'מתוק!',            name:'מדבקת פרח צבעוני — גינה שלמה על מדבקה',               price:300  },
+    { id:'hug',          emoji:'🤗', img:'🤗😊🤗',  type:'normal',   title:'וואו!',            name:'חיבוק וירטואלי חינמי מהמשחק!',                         price:50,   story:'חיבוק חם כל כך שהוא יכול להמיס קרחונים (אבל לא את של ארטיק מסטיק).'   },
+    { id:'sticker1',     emoji:'🌊', img:'🌊🐚🌊',  type:'normal',   title:'יפה!',             name:'מדבקת גלים של רונית ים — על נייר פרמיום',              price:200,  story:'מדביקים את זה על הלפטופ ופתאום מרגישים בסיני.'              },
+    { id:'sticker2',     emoji:'🌸', img:'🌸🌺🌸',  type:'normal',   title:'מתוק!',            name:'מדבקת פרח צבעוני — גינה שלמה על מדבקה',               price:300,  story:'פרח שלא צריך להשקות אותו, רק לאהוב.'               },
     // --- Vacation & Experiences ---
-    { id:'eilat',        emoji:'🏖️', img:'🏖️✈️🏖️', type:'vacation', title:'חופשה באילת!!',   name:'כרטיס טיסה לאילת הלוך ושוב + לילה במלון! ☀️',          price:5000 },
-    { id:'paris',        emoji:'🗼', img:'🗼✈️🗼',  type:'vacation', title:'פריז מחכה לך!',   name:'כרטיס טיסה לפריז + שתי לילות בבוטיק אוטל! 🗼',        price:8000 },
-    { id:'spa',          emoji:'🛁', img:'🛁🧖🛁',  type:'vacation', title:'יום כיף!',         name:'יום ספא שלם עם שרה השכנה — מסאז\'ים ומיטב הטיפולים',  price:2000 },
-    { id:'dayoff',       emoji:'😴', img:'😴☀️😴',  type:'vacation', title:'יום חופש!',        name:'יום חופש שלם עם אמא — שופינג + ארוחה + סרט! 🎬',      price:1200 },
+    { id:'eilat',        emoji:'🏖️', img:'🏖️✈️🏖️', type:'vacation', title:'חופשה באילת!!',   name:'כרטיס טיסה לאילת הלוך ושוב + לילה במלון! ☀️',          price:5000, story:'אילת זה החיים... ארטיק מסטיק... זה החיים.. ' },
+    { id:'paris',        emoji:'🗼', img:'🗼✈️🗼',  type:'vacation', title:'פריז מחכה לך!',   name:'כרטיס טיסה לפריז + שתי לילות בבוטיק אוטל! 🗼',        price:8000, story:'פריז היא עיר האורות, ועם התכשיט החדש שלך — את תהיי הכי זוהרת שם.' },
+    { id:'spa',          emoji:'🛁', img:'🛁🧖🛁',  type:'vacation', title:'יום כיף!',         name:'יום ספא שלם עם שרה השכנה — מסאז\'ים ומיטב הטיפולים',  price:2000, story:'שרה השכנה מבטיחה מסאז\' שישחרר לך גם את המחשבות על מבחנים.' },
+    { id:'dayoff',       emoji:'😴', img:'😴☀️😴',  type:'vacation', title:'יום חופש!',        name:'יום חופש שלם עם אמא — שופינג + ארוחה + סרט! 🎬',      price:1200, story:'אמא אמרה שהיום הולכים ללונה פארק, אבל בסוף מצאת את עצמך עוזרת לה לסדר את המטבח 4 שעות.' },
     // --- VIP Concerts ---
-    { id:'noa',          emoji:'🦄', img:'🦄🎤🦄',  type:'vacation', title:'VIP לנועה קירל!', name:'כרטיס VIP לנועה קירל — גרינרום + מפגש אישי! 🎤',       price:7000 },
-    { id:'eyal',         emoji:'🎤', img:'🎤🌟🎤',  type:'vacation', title:'VIP לאייל גולן!', name:'כרטיס VIP לאייל גולן — מושב קדמי + חתימה! 🌟',         price:7000 },
-    { id:'omer',         emoji:'🎫', img:'🎫🎵🎫',  type:'vacation', title:'VIP לעומר אדם!',  name:'כרטיס VIP לעומר אדם — ראשית שורה + תמונה! 🎵',         price:7000 },
+    { id:'noa',          emoji:'🦄', img:'🦄🎤🦄',  type:'vacation', title:'VIP לנועה קירל!', name:'כרטיס VIP לנועה קירל — גרינרום + מפגש אישי! 🎤',       price:7000, story:'נועה קירל ביקשה למסור שאת הפנתרה האמיתית של המשחק הזה.' },
+    { id:'eyal',         emoji:'🎤', img:'🎤🌟🎤',  type:'vacation', title:'VIP לאייל גולן!', name:'כרטיס VIP לאייל גולן — מושב קדמי + חתימה! 🌟',         price:7000, story:'אייל גולן מחכה לך עם המיקרופון הכי מוזהב בשורה הראשונה.'         },
+    { id:'omer',         emoji:'🎫', img:'🎫🎵🎫',  type:'vacation', title:'VIP לעומר אדם!',  name:'כרטיס VIP לעומר אדם — ראשית שורה + תמונה! 🎵',         price:7000, story:'עומר אדם כבר מכין את השירים שאת הכי אוהבת לרקוד.'         },
     // --- Tech ---
-    { id:'airpods',      emoji:'🎧', img:'🎧🍎🎧',  type:'tech',     title:'Amazon Prime!',   name:'AirPods Pro 2nd gen — ביטול רעש מקצועי, ORIGINAL! 🎧',  price:5000 },
-    { id:'iphone',       emoji:'📱', img:'📱🍎📱',  type:'tech',     title:'סלולרי חדש!',     name:'iPhone 16 Pro 256GB — אחריות מלאה, כל הצבעים! 📱',      price:12000},
-    { id:'ps5',          emoji:'🎮', img:'🎮🕹️🎮',  type:'tech',     title:'PS5 חדש!!',       name:'PlayStation 5 Slim + 2 שלטים — חדש בקרטון! 🎮',        price:12000},
+    { id:'airpods',      emoji:'🎧', img:'🎧🍎🎧',  type:'tech',     title:'Amazon Prime!',   name:'AirPods Pro 2nd gen — ביטול רעש מקצועי, ORIGINAL! 🎧',  price:5000, story:'ניסית להפעיל ביטול רעשים, פתאום הכל היה שקט כל כך ששמעת את המחשבות של החתול שלך.' },
+    { id:'iphone',       emoji:'📱', img:'📱🍎📱',  type:'tech',     title:'סלולרי חדש!',     name:'iPhone 16 Pro 256GB — אחריות מלאה, כל הצבעים! 📱',      price:12000, story:'האייפון הזה כל כך חכם שהוא כבר פתר בעצמו את השאלה הבאה במשחק.' },
+    { id:'ps5',          emoji:'🎮', img:'🎮🕹️🎮',  type:'tech',     title:'PS5 חדש!!',       name:'PlayStation 5 Slim + 2 שלטים — חדש בקרטון! 🎮',        price:12000, story:'השלט רטט כה חזק שחשבת שרעידת אדמה קטנה הגיעה לסלון.' },
     // --- Funny ---
-    { id:'grandmaRY',    emoji:'👵', img:'👵😂👵',  type:'funny',    title:'סבתא של רונית!',  name:'בילוי מלא עם סבתא של רונית ים — עוגה ביתי + סיפורים', price:100  },
-    { id:'konik_tour',   emoji:'🏘️', img:'🏘️🚶🏘️',  type:'funny',    title:'סיור אקסלוסיבי!',  name:'סיור עם רן קוניק ברחוב אידמית — כולל הסברים על המדרכות', price:250  },
-    { id:'izik_air',     emoji:'🌲', img:'🌲🚗🌲',  type:'funny',    title:'ריח של פעם!',     name:'עץ ריח "אורנים" מתנה מאיציק נפחא — ריח חזק מהניינטיז', price:120  },
-    { id:'poop_week',    emoji:'💩', img:'💩🧹💩',  type:'funny',    title:'שירות לעיר!',     name:'שבוע איסוף חינם קקי ברחבי העיר — התנדבות בכיף!',       price:50   },
-    { id:'pickles',      emoji:'🥒', img:'🥒🤪🥒',  type:'funny',    title:'מעדן אמיתי!',    name:'קופסת מלפפונים חמוצים — ריקה אבל הריח נשאר',           price:95   },
-    { id:'pita_pagi',    emoji:'🫓', img:'🫓🍫🫓',  type:'funny',    title:'טעם של פעם!',    name:'פיתה עם שוקולד פגי פג — הטעם של ילדות קשה',           price:60   },
-    { id:'scooter',      emoji:'🛴', img:'🛴💨🛴',  type:'funny',    title:'נהג חדש!',       name:'שיעור נהיגה על קורקינט חשמלי — בלי קסדה ובלי בושה',    price:150  },
-    { id:'pole',         emoji:'⚡', img:'⚡🐾⚡',  type:'funny',    title:'נכס נדל"ני!',    name:'עמוד חשמל אישי ברחוב — ניתן להדביק עליו מודעות אבדה',  price:200  },
-    { id:'post_office',  emoji:'✉️', img:'✉️⌛✉️',  type:'funny',    title:'תור VIP!',       name:'תור מקוצר בדואר ישראל — רק שעתיים המתנה במקום שלוש',    price:40   },
-    { id:'cleaner_selfie', emoji:'🧹', img:'🧹📸🧹',  type:'funny',    title:'סלב מקומי!',     name:'סלפי עם מנקה הרחובות בבוקר — כולל מטאטא מתנה!',        price:30   },
-    { id:'korazin',      emoji:'🚌', img:'🚌💨🚌',  type:'funny',    title:'נסיעת VIP!',     name:'כרטיס חינם לסיבוב בכורזין — כורזין אקספרס בשיא המהירות', price:45   },
-    { id:'monopoly',    emoji:'💸', img:'💸🎲💸',  type:'funny',    title:'עושר מיידי!',    name:'1000 ש"ח של מונופול — במזומן! ניתן לרכוש את רחוב דיזנגוף', price:10   },
-    { id:'dad_day',      emoji:'👨‍👧', img:'👨‍👧❤️👨‍👧', type:'funny',    title:'יום של כיף!',    name:'יום כיף עם אבא על חשבוני — כולל גלידה וחיבוק',      price:1000 },
-    { id:'cinema_ugly',  emoji:'🎬', img:'🎬😱🎬',  type:'funny',    title:'חווית קולנוע!',  name:'כרטיס לסרט 1+1-2 בקולנוע רב כיעור — הכסא השבור עלינו',   price:25   },
-    { id:'kuba',         emoji:'🥘', img:'🥘🔥🥘',  type:'funny',    title:'מעדן מטוגן!',    name:'קובה נבלוסיה מטוגן בשמן עמוק — מגיע עם טחינה ולימון',   price:90   },
-    { id:'cottage',      emoji:'🧀', img:'🧀🥛🧀',  type:'funny',    title:'מהמקרר!',         name:'קוטג\' מהמקרר (עם הבועות) — גביע פתוח חלקית',         price:15   },
+    { id:'grandmaRY',    emoji:'👵', img:'👵😂👵',  type:'funny',    title:'סבתא של רונית!',  name:'בילוי מלא עם סבתא של רונית ים — עוגה ביתי + סיפורים', price:100,  story:'עוגה ביתית וסיפורים על איך פעם אבטיחים היו מרובעים.'  },
+    { id:'konik_tour',   emoji:'🏘️', img:'🏘️🚶🏘️',  type:'funny',    title:'סיור אקסלוסיבי!',  name:'סיור עם רן קוניק ברחוב אידמית — כולל הסברים על המדרכות', price:250,  story:'קוניק מבטיח להראות לך איפה בדיוק המדרכה מחליפה צבע.'  },
+    { id:'izik_air',     emoji:'🌲', img:'🌲🚗🌲',  type:'funny',    title:'ריח של פעם!',     name:'עץ ריח "אורנים" מתנה מאיציק נפחא — ריח חזק מהניינטיז', price:120,  story:'הריח הזה חזק כל כך שהוא מחזיר אותך בזמן ישר לשנת 1994.'  },
+    { id:'poop_week',    emoji:'💩', img:'💩🧹💩',  type:'funny',    title:'שירות לעיר!',     name:'שבוע איסוף חינם קקי ברחבי העיר — התנדבות בכיף!',       price:50,   story:'שירות לאומי במיטבו! העיר מודה לך על כל שקית ושקית.'       },
+    { id:'pickles',      emoji:'🥒', img:'🥒🤪🥒',  type:'funny',    title:'מעדן אמיתי!',    name:'קופסת מלפפונים חמוצים — ריקה אבל הריח נשאר',           price:95,   story:'הריח הזה ילווה אותך בנסיעות ארוכות ובלתי נשכחות.'           },
+    { id:'pita_pagi',    emoji:'🫓', img:'🫓🍫🫓',  type:'funny',    title:'טעם של פעם!',    name:'פיתה עם שוקולד פגי פג — הטעם של ילדות קשה',           price:60,   story:'השוקולד הכי נוסטלגי שיכולת לבקש בתוך פיתה חמה.'           },
+    { id:'scooter',      emoji:'🛴', img:'🛴💨🛴',  type:'funny',    title:'נהג חדש!',       name:'שיעור נהיגה על קורקינט חשמלי — בלי קסדה ובלי בושה',    price:150,  story:'הרוח בשערות, הברקסים לא עובדים, והחיוך בשמיים.'    },
+    { id:'pole',         emoji:'⚡', img:'⚡🐾⚡',  type:'funny',    title:'נכס נדל"ני!',    name:'עמוד חשמל אישי ברחוב — ניתן להדביק עליו מודעות אבדה',  price:200,  story:'עכשיו כולם ידעו שזה העמוד שלך להדבקות ולהודעות חשובות.'  },
+    { id:'post_office',  emoji:'✉️', img:'✉️⌛✉️',  type:'funny',    title:'תור VIP!',       name:'תור מקוצר בדואר ישראל — רק שעתיים המתנה במקום שלוש',    price:40,   story:'הזמן עובר בכיף כשאת יודעת שיש לך רק 120 דקות לחכות.'    },
+    { id:'cleaner_selfie', emoji:'🧹', img:'🧹📸🧹',  type:'funny',    title:'סלב מקומי!',     name:'סלפי עם מנקה הרחובות בבוקר — כולל מטאטא מתנה!',        price:30,   story:'הוא אמר שאת הכי מוכשרת באיסוף אחוזים שהוא ראה אי פעם.'        },
+    { id:'korazin',      emoji:'🚌', img:'🚌💨🚌',  type:'funny',    title:'נסיעת VIP!',     name:'כרטיס חינם לסיבוב בכורזין — כורזין אקספרס בשיא המהירות', price:45,   story:'כורזין זה החיים... ארטיק מסטיק.. זה החיים.. דווידוביץ... יאללה הבנתי! הנהג שאל אם אתה יורד בפינה, אמרת לו "לא, אני בסיבוב של החיים שלי!"'   },
+    { id:'monopoly',    emoji:'💸', img:'💸🎲💸',  type:'funny',    title:'עושר מיידי!',    name:'1000 ש"ח של מונופול — במזומן! ניתן לרכוש את רחוב דיזנגוף', price:10,   story:'ניסית לשלם עם זה במכולת, המוכר שאל אם אתה מחפש את דרך יפו או את הכלא.'   },
+    { id:'dad_day',      emoji:'👨‍👧', img:'👨‍👧❤️👨‍👧', type:'funny',    title:'יום של כיף!',    name:'יום כיף עם אבא על חשבוני — כולל גלידה וחיבוק',      price:1000, story:'אבא אמר שהיום הולכים ללונה פארק, אבל בסוף מצאת את עצמך עוזרת לו לסדר את המטבח 4 שעות.' },
+    { id:'cinema_ugly',  emoji:'🎬', img:'🎬😱🎬',  type:'funny',    title:'חווית קולנוע!',  name:'כרטיס לסרט 1+1-2 בקולנוע רב כיעור — הכסא השבור עלינו',   price:25,   story:'הסרט היה כל כך גרוע שהפופקורן ביקש לצאת מהאולם באמצע.'   },
+    { id:'kuba',         emoji:'🥘', img:'🥘🔥🥘',  type:'funny',    title:'מעדן מטוגן!',    name:'קובה נבלוסיה מטוגן בשמן עמוק — מגיע עם טחינה ולימון',   price:90,   story:'זה היה כל כך טעים שכלימור דפקה בדלת לשאול אם יש משלוחים.'   },
+    { id:'cottage',      emoji:'🧀', img:'🧀🥛🧀',  type:'funny',    title:'מהמקרר!',         name:'קוטג\' מהמקרר (עם הבועות) — גביע פתוח חלקית',         price:15,   story:'פתחת אותו וגילית שהבועות כבר התחילו לתכנן מהפכה ולהקים ממשלה משלהן, אבל לאריאל לא אכפת קוטג׳ זה קוטג׳.'         },
 ];
 
 const TEASE_MSGS = [
@@ -936,8 +936,18 @@ function openChestReward() {
         document.getElementById('chest-prize-img').innerText = reward.emoji;
         document.getElementById('chest-prize-name').innerText = reward.name;
         
-        // Auto-close after 4 seconds (as requested, 2 for detail + buffer)
-        setTimeout(closeChest, 4000);
+        // Add Story if exists
+        const storyEl = document.getElementById('chest-prize-story') || document.createElement('div');
+        storyEl.id = 'chest-prize-story';
+        storyEl.style.fontSize = '0.95rem';
+        storyEl.style.marginTop = '10px';
+        storyEl.style.color = '#ffd700';
+        storyEl.style.fontStyle = 'italic';
+        storyEl.innerText = reward.story || '';
+        document.getElementById('chest-prize-name').parentElement.appendChild(storyEl);
+
+        // Auto-close after 6 seconds (more time to read the story)
+        setTimeout(closeChest, 6000);
     }, 500);
 }
 

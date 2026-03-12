@@ -98,13 +98,11 @@ const REWARDS = [
     { id:'iphone',       emoji:'📱', img:'📱🍎📱',  type:'tech',     title:'סלולרי חדש!',     name:'iPhone 16 Pro 256GB — אחריות מלאה, כל הצבעים! 📱',      price:12000},
     { id:'ps5',          emoji:'🎮', img:'🎮🕹️🎮',  type:'tech',     title:'PS5 חדש!!',       name:'PlayStation 5 Slim + 2 שלטים — חדש בקרטון! 🎮',        price:12000},
     // --- Funny ---
-    { id:'grandmaRY',    emoji:'👵', img:'👵😂👵',  type:'funny',    title:'סבתא של רונית!',  name:'בילוי מלא עם סבתא של רונית ים — עוגה ביתית + סיפורים', price:100  },
-    { id:'catphoto',     emoji:'📸', img:'📸🐱📸',  type:'funny',    title:'!היסטרי',         name:'תמונה עם חתול שרה השכנה — הוא לא ישמח אבל תהיי',       price:80   },
-    { id:'sock',         emoji:'🧦', img:'🧦👟🧦',  type:'funny',    title:'מציאת חיים!',     name:'גרב שמאלי של ד"ר מרטינס — בשימוש קל, ריח קל',          price:120  },
-    { id:'bujji',        emoji:'🏛️', img:'🏛️😄🏛️',  type:'funny',    title:'חוכמה עמוקה!',   name:'אמרה עמוקה מבוז\'י הרצוג — "אנחנו נצחנו!"',            price:150  },
-    { id:'rabbi',        emoji:'📜', img:'📜🙏📜',  type:'funny',    title:'ברכה אישית!',     name:'ברכה מהרב רבי רביהו — נשלחת ישירות ב-SMS',             price:130  },
-    { id:'gilgul',       emoji:'👻', img:'👻💫👻',  type:'funny',    title:'מיסטי!',          name:'מפגש עם גילגול נשמת מכלוף — ערב מיסטי עם נרות',        price:250  },
-    { id:'umbrella',     emoji:'☂️', img:'☂️🌧️☂️',  type:'funny',    title:'אוצר אמיתי!',    name:'מטרייה שבורה של שרה — נפתחת רק משמאל וסוגרת מימין',    price:110  },
+    { id:'grandmaRY',    emoji:'👵', img:'👵😂👵',  type:'funny',    title:'סבתא של רונית!',  name:'בילוי מלא עם סבתא של רונית ים — עוגה ביתי + סיפורים', price:100  },
+    { id:'konik_tour',   emoji:'🏘️', img:'🏘️🚶🏘️',  type:'funny',    title:'סיור אקסלוסיבי!',  name:'סיור עם רן קוניק ברחוב אידמית — כולל הסברים על המדרכות', price:250  },
+    { id:'izik_air',     emoji:'🌲', img:'🌲🚗🌲',  type:'funny',    title:'ריח של פעם!',     name:'עץ ריח "אורנים" מתנה מאיציק נפחא — ריח חזק מהניינטיז', price:120  },
+    { id:'poop_week',    emoji:'💩', img:'💩🧹💩',  type:'funny',    title:'שירות לעיר!',     name:'שבוע איסוף חינם קקי ברחבי העיר — התנדבות בכיף!',       price:50   },
+    { id:'pickles',      emoji:'🥒', img:'🥒🤪🥒',  type:'funny',    title:'מעדן אמיתי!',    name:'קופסת מלפפונים חמוצים — ריקה אבל הריח נשאר',           price:95   },
 ];
 
 const TEASE_MSGS = [
@@ -501,13 +499,28 @@ function renderCustom() {
         ctx.translate(body.position.x,body.position.y);
         ctx.rotate(body.angle);
 
-        // Shadow
-        ctx.shadowColor='rgba(0,0,0,0.45)'; ctx.shadowBlur=8; ctx.shadowOffsetX=2; ctx.shadowOffsetY=4;
+        // Draw 3D Sphere Background with Volume and Gloss
+        ctx.shadowColor='rgba(0,0,0,0.5)'; ctx.shadowBlur=15; ctx.shadowOffsetX=4; ctx.shadowOffsetY=6;
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, 2 * Math.PI);
+        const grad = ctx.createRadialGradient(-r*0.35, -r*0.35, r*0.1, 0, 0, r);
+        grad.addColorStop(0, lighten(color, 90)); // bright highlight
+        grad.addColorStop(0.4, color);
+        grad.addColorStop(1, shadeColor(color, -60)); // deep shadow
+        ctx.fillStyle = grad;
+        ctx.fill();
 
-        // Draw the emoji as the active fruit body
-        ctx.font=`${Math.max(20,r*1.65)}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+        // Gloss Overlay
+        ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0;
+        ctx.beginPath();
+        ctx.ellipse(-r*0.3, -r*0.3, r*0.4, r*0.2, Math.PI*0.25, 0, 2*Math.PI);
+        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        ctx.fill();
+
+        // Draw the emoji slightly up for depth
+        ctx.font=`${Math.max(20,r*1.1)}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
         ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.fillText(fd.emoji, 0, 0);
+        ctx.fillText(fd.emoji, 0, -r*0.1);
 
         // Animated facial expressions!
         const t = Date.now() + body.id * 888; // Unique random offset per fruit

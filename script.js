@@ -743,12 +743,20 @@ function burst(x,y,color,count){
 }
 
 // ===== PRAISE =====
-function showPraise(x,y){
-    const pw=PRAISE[Math.floor(Math.random()*PRAISE.length)];
+function showPraise(x,y, customTxt = null, customColor = null){
+    const pw=customTxt ? {text:customTxt, color:customColor} : PRAISE[Math.floor(Math.random()*PRAISE.length)];
     const el=document.createElement('div');
     el.className='praise-popup';el.innerText=pw.text;el.style.color=pw.color;
     el.style.left=x+'px';el.style.top=y+'px';
-    popupContainer.appendChild(el);setTimeout(()=>el.remove(),1700);
+    if(customTxt) {
+        el.style.fontSize = '1.8rem';
+        el.style.width = '100%';
+        el.style.textAlign = 'center';
+        el.style.left = '0';
+        el.style.background = 'rgba(0,0,0,0.6)';
+        el.style.padding = '15px';
+    }
+    popupContainer.appendChild(el);setTimeout(()=>el.remove(), customTxt ? 2500 : 1700);
 }
 
 // ===== CHEST SEQUENCE (2-Step Click) =====
@@ -836,8 +844,14 @@ function updateScore(delta) {
     currentPoints = Math.max(0, currentPoints + delta);
     if(scoreValueEl) scoreValueEl.innerText = Math.floor(currentScore);
     
-    // Brawl Stars Chest Hook: Trigger every 2500 points
-    if (Math.floor(currentScore / 2500) > Math.floor(oldScore / 2500)) {
+    // Encouragement msg: One question before reward (350 CP step)
+    const currentBase = Math.floor(currentScore / 400) * 400;
+    if (currentScore >= currentBase + 350 && oldScore < currentBase + 350) {
+        showPraise(window.innerWidth/2, window.innerHeight/3, "עוד שאלה אחת לפרס שווה... ✨", "#ffeb3b");
+    }
+
+    // Brawl Stars Chest Hook: Trigger every 400 points
+    if (Math.floor(currentScore / 400) > Math.floor(oldScore / 400)) {
         setTimeout(showChestSequence, 800);
     }
 

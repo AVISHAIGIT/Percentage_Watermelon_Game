@@ -44,14 +44,26 @@
         <!-- Matter.js Canvas -->
         <div id="canvas-container"></div>
 
-        <!-- Treasure Chest Reveal -->
         <div id="chest-overlay" class="hidden">
             <div class="chest-rays"></div>
-            <div id="chest-box">
-                <div id="chest-emoji">🎁</div>
+            
+            <!-- Step 1: Closed Chest -->
+            <div id="chest-closed-view">
+                <div class="tease-banner" id="tease-text">🎁 פרס שווה במיוחד!</div>
+                <div class="chest-click-area" id="chest-clicker" onclick="handleChestClick()">
+                    <div class="chest-coins-inside">💰✨</div>
+                    <div class="chest-lid">📂</div>
+                    <div class="chest-body">📦</div>
+                    <div class="coins-ring" id="coins-ring"></div>
+                </div>
+                <div class="chest-click-hint" onclick="handleChestClick()">לחץ כדי לפתוח! 👇</div>
+            </div>
+
+            <!-- Step 2: Reward Reveal -->
+            <div id="chest-reward-card" class="hidden">
                 <div id="chest-title">אוצר חדש!</div>
+                <div id="chest-prize-img"></div>
                 <div id="chest-prize-name"></div>
-                <div id="chest-prize-emoji"></div>
                 <button id="chest-close-btn" onclick="closeChest()">🎉 יאהוו!</button>
             </div>
         </div>

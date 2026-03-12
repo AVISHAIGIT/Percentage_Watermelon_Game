@@ -103,6 +103,11 @@ const REWARDS = [
     { id:'izik_air',     emoji:'🌲', img:'🌲🚗🌲',  type:'funny',    title:'ריח של פעם!',     name:'עץ ריח "אורנים" מתנה מאיציק נפחא — ריח חזק מהניינטיז', price:120  },
     { id:'poop_week',    emoji:'💩', img:'💩🧹💩',  type:'funny',    title:'שירות לעיר!',     name:'שבוע איסוף חינם קקי ברחבי העיר — התנדבות בכיף!',       price:50   },
     { id:'pickles',      emoji:'🥒', img:'🥒🤪🥒',  type:'funny',    title:'מעדן אמיתי!',    name:'קופסת מלפפונים חמוצים — ריקה אבל הריח נשאר',           price:95   },
+    { id:'pita_pagi',    emoji:'🫓', img:'🫓🍫🫓',  type:'funny',    title:'טעם של פעם!',    name:'פיתה עם שוקולד פגי פג — הטעם של ילדות קשה',           price:60   },
+    { id:'scooter',      emoji:'🛴', img:'🛴💨🛴',  type:'funny',    title:'נהג חדש!',       name:'שיעור נהיגה על קורקינט חשמלי — בלי קסדה ובלי בושה',    price:150  },
+    { id:'pole',         emoji:'⚡', img:'⚡🐾⚡',  type:'funny',    title:'נכס נדל"ני!',    name:'עמוד חשמל אישי ברחוב — ניתן להדביק עליו מודעות אבדה',  price:200  },
+    { id:'post_office',  emoji:'✉️', img:'✉️⌛✉️',  type:'funny',    title:'תור VIP!',       name:'תור מקוצר בדואר ישראל — רק שעתיים המתנה במקום שלוש',    price:40   },
+    { id:'cleaner_selfie', emoji:'🧹', img:'🧹📸🧹',  type:'funny',    title:'סלב מקומי!',     name:'סלפי עם מנקה הרחובות בבוקר — כולל מטאטא מתנה!',        price:30   },
 ];
 
 const TEASE_MSGS = [
@@ -803,10 +808,18 @@ window.closeChest=function(){
 };
 
 // ===== SCORE (session only) =====
-function updateScore(pts){
-    currentScore=Math.max(0,currentScore+pts);
-    currentPoints=Math.max(0,currentPoints+pts);
-    if(scoreValueEl)scoreValueEl.innerText=currentScore;
+// ===== SCORE & POINTS =====
+function updateScore(delta) {
+    const oldScore = currentScore;
+    currentScore = Math.max(0, currentScore + delta);
+    currentPoints = Math.max(0, currentPoints + delta);
+    if(scoreValueEl) scoreValueEl.innerText = Math.floor(currentScore);
+    
+    // Brawl Stars Chest Hook: Trigger every 2500 points
+    if (Math.floor(currentScore / 2500) > Math.floor(oldScore / 2500)) {
+        setTimeout(showChestSequence, 800);
+    }
+
     const sp=document.getElementById('shop-points');
     if(sp)sp.innerText=currentPoints;
     checkAutoRewards();
@@ -854,6 +867,75 @@ document.getElementById('hint-btn')?.addEventListener('click', () => showHint())
 
 
 // ===== GAME OVER =====
+// ===== CHEST SEQUENCE (Brawl Stars Style) =====
+function showChestSequence() {
+    const overlay = document.getElementById('chest-overlay');
+    const closedView = document.getElementById('chest-closed-view');
+    const rewardCard = document.getElementById('chest-reward-card');
+    const teaseText = document.getElementById('tease-text');
+
+    overlay.classList.remove('hidden');
+    closedView.classList.remove('hidden');
+    rewardCard.classList.add('hidden');
+    
+    // Pick a random tease message
+    teaseText.innerText = pick(TEASE_MSGS);
+    playChest();
+}
+
+let chestClicks = 0;
+function handleChestClick() {
+    chestClicks++;
+    const clicker = document.getElementById('chest-clicker');
+    clicker.classList.remove('chest-box-anim');
+    void clicker.offsetWidth; // trigger reflow
+    clicker.classList.add('chest-box-anim');
+    
+    playSound(400 + chestClicks * 100, 'square', 0.05);
+
+    if (chestClicks >= 3) {
+        chestClicks = 0;
+        openChestReward();
+    }
+}
+
+function openChestReward() {
+    const closedView = document.getElementById('chest-closed-view');
+    const rewardCard = document.getElementById('chest-reward-card');
+    const coinsRing = document.getElementById('coins-ring');
+
+    // Explosion of coins/stars
+    coinsRing.style.display = 'block';
+    for(let i=0; i<12; i++) {
+        const coin = document.createElement('div');
+        coin.className = 'fcoin';
+        coin.innerText = i % 2 === 0 ? '💰' : '✨';
+        coin.style.setProperty('--angle', (i * 30) + 'deg');
+        coin.style.setProperty('--d', (i * 0.05) + 's');
+        coinsRing.appendChild(coin);
+        setTimeout(()=>coin.remove(), 1000);
+    }
+
+    playSuccess();
+
+    setTimeout(() => {
+        closedView.classList.add('hidden');
+        rewardCard.classList.remove('hidden');
+        
+        // Pick a funny/random reward
+        const reward = pick(REWARDS);
+        document.getElementById('chest-prize-img').innerText = reward.emoji;
+        document.getElementById('chest-prize-name').innerText = reward.name;
+        
+        // Auto-close after 4 seconds (as requested, 2 for detail + buffer)
+        setTimeout(closeChest, 4000);
+    }, 500);
+}
+
+function closeChest() {
+    const overlay = document.getElementById('chest-overlay');
+    overlay.classList.add('hidden');
+}
 function triggerGameOver(){
     if(isGameOver)return;isGameOver=true;
     document.getElementById('final-score').innerText=currentScore;

@@ -35,6 +35,7 @@ git add .
 git commit -m "Game Web Deployment Update $timestamp" 2>&1 | Out-Null
 git push -u origin main --force 2>&1 | Write-Output
 
-Write-Host "`n🚀 Deployed to GitHub successfully!" -ForegroundColor Green
-Write-Host "🌐 https://avishaigit.github.io/Percentage_Watermelon_Game/" -ForegroundColor Yellow
-Write-Host "`nGitHub Pages updates in 1-2 minutes." -ForegroundColor Gray
+Write-Host "Deployed to GitHub successfully!" -ForegroundColor Green
+Write-Host "https://avishaigit.github.io/Percentage_Watermelon_Game/" -ForegroundColor Yellow
+Write-Host "GitHub Pages updates in 1-2 minutes." -ForegroundColor Gray
+

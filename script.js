@@ -108,6 +108,12 @@ const REWARDS = [
     { id:'pole',         emoji:'⚡', img:'⚡🐾⚡',  type:'funny',    title:'נכס נדל"ני!',    name:'עמוד חשמל אישי ברחוב — ניתן להדביק עליו מודעות אבדה',  price:200  },
     { id:'post_office',  emoji:'✉️', img:'✉️⌛✉️',  type:'funny',    title:'תור VIP!',       name:'תור מקוצר בדואר ישראל — רק שעתיים המתנה במקום שלוש',    price:40   },
     { id:'cleaner_selfie', emoji:'🧹', img:'🧹📸🧹',  type:'funny',    title:'סלב מקומי!',     name:'סלפי עם מנקה הרחובות בבוקר — כולל מטאטא מתנה!',        price:30   },
+    { id:'korazin',      emoji:'🚌', img:'🚌💨🚌',  type:'funny',    title:'נסיעת VIP!',     name:'כרטיס חינם לסיבוב בכורזין — כורזין אקספרס בשיא המהירות', price:45   },
+    { id:'monopoly',    emoji:'💸', img:'💸🎲💸',  type:'funny',    title:'עושר מיידי!',    name:'1000 ש"ח של מונופול — במזומן! ניתן לרכוש את רחוב דיזנגוף', price:10   },
+    { id:'dad_day',      emoji:'👨‍👧', img:'👨‍👧❤️👨‍👧', type:'funny',    title:'יום של כיף!',    name:'יום כיף עם אבא על חשבוני — כולל גלידה וחיבוק',      price:1000 },
+    { id:'cinema_ugly',  emoji:'🎬', img:'🎬😱🎬',  type:'funny',    title:'חווית קולנוע!',  name:'כרטיס לסרט 1+1-2 בקולנוע רב כיעור — הכסא השבור עלינו',   price:25   },
+    { id:'kuba',         emoji:'🥘', img:'🥘🔥🥘',  type:'funny',    title:'מעדן מטוגן!',    name:'קובה נבלוסיה מטוגן בשמן עמוק — מגיע עם טחינה ולימון',   price:90   },
+    { id:'cottage',      emoji:'🧀', img:'🧀🥛🧀',  type:'funny',    title:'מהמקרר!',         name:'קוטג\' מהמקרר (עם הבועות) — גביע פתוח חלקית',         price:15   },
 ];
 
 const TEASE_MSGS = [
@@ -546,45 +552,48 @@ function renderCustom() {
         
         // Eyes
         if (isBlink) { // Drawn V V
-            ctx.lineWidth = Math.max(1.5, r * 0.05);
+            ctx.lineWidth = Math.max(2.5, r * 0.08); // Thicker line
             ctx.lineCap='round'; ctx.lineJoin='round';
             [[-eyeX, eyeY], [eyeX, eyeY]].forEach(([ex, ey]) => {
                 ctx.beginPath();
-                ctx.moveTo(ex - r*.1, ey);
-                ctx.lineTo(ex, ey + r*.08);
-                ctx.lineTo(ex + r*.1, ey);
+                ctx.moveTo(ex - r*.12, ey);
+                ctx.lineTo(ex, ey + r*.1);
+                ctx.lineTo(ex + r*.12, ey);
                 ctx.stroke();
             });
         } else if (isSurprised) { // Wide O O
-            const eyeR = Math.max(3.5, r * 0.12);
+            const eyeR = Math.max(5, r * 0.18); // Bigger surprised eyes
             [[-eyeX, eyeY], [eyeX, eyeY]].forEach(([ex, ey]) => {
                 ctx.beginPath(); ctx.arc(ex, ey, eyeR, 0, Math.PI*2); ctx.fill();
                 ctx.fillStyle = 'white';
                 ctx.beginPath(); ctx.arc(ex, ey, eyeR*0.4, 0, Math.PI*2); ctx.fill();
                 ctx.fillStyle = 'rgba(30,20,5,0.85)';
             });
-        } else { // Normal cute dots
-            const eyeR = Math.max(2.5, r * 0.09);
+        } else { // Normal cute dots - but BIGGER
+            const eyeR = Math.max(4, r * 0.15); // Much bigger pupils
             [[-eyeX, eyeY], [eyeX, eyeY]].forEach(([ex, ey]) => {
                 ctx.beginPath(); ctx.arc(ex, ey, eyeR, 0, Math.PI*2); ctx.fill();
                 ctx.fillStyle = 'white';
-                ctx.beginPath(); ctx.arc(ex - eyeR*0.3, ey - eyeR*0.3, eyeR*0.35, 0, Math.PI*2); ctx.fill();
+                // Shine is also slightly larger
+                ctx.beginPath(); ctx.arc(ex - eyeR*0.3, ey - eyeR*0.3, eyeR*0.38, 0, Math.PI*2); ctx.fill();
                 ctx.fillStyle = 'rgba(30,20,5,0.85)';
             });
         }
 
-        // Mouth
-        ctx.lineWidth = Math.max(1.5, r * 0.05);
+        // Mouth - Bigger and bolder!
+        ctx.lineWidth = Math.max(2.5, r * 0.08);
         ctx.beginPath();
         if (isSurprised) {
-            ctx.arc(0, eyeY + r*0.28, r*0.08, 0, Math.PI*2);
+            ctx.arc(0, eyeY + r*0.32, r*0.12, 0, Math.PI*2); // Bigger mouth O
             ctx.fill();
         } else if (isHappy) {
-            ctx.arc(0, eyeY + r*0.18, r*0.16, 0.1*Math.PI, 0.9*Math.PI);
+            // Wider and deeper smile
+            ctx.arc(0, eyeY + r*0.2, r*0.22, 0.05*Math.PI, 0.95*Math.PI);
             ctx.stroke();
         } else {
-            ctx.moveTo(-r*0.1, eyeY + r*0.22);
-            ctx.lineTo(r*0.1, eyeY + r*0.22);
+            // Neutral but thicker
+            ctx.moveTo(-r*0.15, eyeY + r*0.25);
+            ctx.lineTo(r*0.15, eyeY + r*0.25);
             ctx.stroke();
         }
 

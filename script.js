@@ -499,22 +499,29 @@ function renderCustom() {
         ctx.translate(body.position.x,body.position.y);
         ctx.rotate(body.angle);
 
-        // Draw 3D Sphere Background with Volume and Gloss
-        ctx.shadowColor='rgba(0,0,0,0.5)'; ctx.shadowBlur=15; ctx.shadowOffsetX=4; ctx.shadowOffsetY=6;
+        // Draw 3D Sphere Background with Volume and High Contrast Stroke
+        ctx.shadowColor='rgba(0,0,0,0.6)'; ctx.shadowBlur=15; ctx.shadowOffsetX=4; ctx.shadowOffsetY=6;
+        
+        // High Contrast Border to ensure visibility on dark backgrounds
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, 2 * Math.PI);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
         const grad = ctx.createRadialGradient(-r*0.35, -r*0.35, r*0.1, 0, 0, r);
-        grad.addColorStop(0, lighten(color, 90)); // bright highlight
-        grad.addColorStop(0.4, color);
-        grad.addColorStop(1, shadeColor(color, -60)); // deep shadow
+        grad.addColorStop(0, lighten(color, 100)); // Very bright specular highlight
+        grad.addColorStop(0.3, color);
+        grad.addColorStop(0.8, shadeColor(color, -60)); // deep core shadow
+        grad.addColorStop(1, shadeColor(color, -80)); // extreme edge shadow
         ctx.fillStyle = grad;
         ctx.fill();
 
-        // Gloss Overlay
+        // Gloss Overlay - made more opaque
         ctx.shadowColor = 'transparent'; ctx.shadowBlur = 0;
         ctx.beginPath();
         ctx.ellipse(-r*0.3, -r*0.3, r*0.4, r*0.2, Math.PI*0.25, 0, 2*Math.PI);
-        ctx.fillStyle = 'rgba(255,255,255,0.3)';
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
         ctx.fill();
 
         // Draw the emoji slightly up for depth

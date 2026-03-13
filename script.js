@@ -1006,15 +1006,13 @@ window.addEventListener('resize',()=>{
     if(render){render.canvas.width=gameContainer.clientWidth;render.canvas.height=gameContainer.clientHeight;}
 });
 
-// ===== ROTATING BACKGROUNDS =====
+// ===== ROTATING BACKGROUNDS (Disabled for ring-bg) =====
 const BG_THEMES=['theme-space','theme-ocean','theme-jungle','theme-sunset','theme-aurora'];
 let bgIdx=0;
 function rotateBg(){
-    const el=document.getElementById('bg-layer');if(!el)return;
-    BG_THEMES.forEach(t=>el.classList.remove(t));
-    el.classList.add(BG_THEMES[bgIdx]);
-    bgIdx=(bgIdx+1)%BG_THEMES.length;
+    // Disabled to keep the ring background permanent
+    return;
 }
-rotateBg(); setInterval(rotateBg,40000);
+rotateBg(); // No-op now
 
 initGame();

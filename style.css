@@ -17,9 +17,10 @@ body, html {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
     transition: background 3s ease, filter 3s ease;
     overflow: hidden;
-    background-image: url('custom_bg.png');
+    background-image: url('assets/backgrounds/ring_bg.png') !important;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 #bg-layer::before {
     content: ''; position: absolute; top:0; left:0; width:100%; height:100%;

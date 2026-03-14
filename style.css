@@ -509,6 +509,26 @@ body, html {
 .prize-label { font-size: 0.7rem; color: #fff; font-weight: 700; text-align: center; }
 #no-prizes-msg { color: #aaa; text-align: center; padding: 30px; font-style: italic; }
 
+/* ===== LIGHTBOX ===== */
+#lightbox-overlay {
+    z-index: 2100; background: rgba(0,0,0,0.92);
+    display: flex; align-items: center; justify-content: center;
+}
+.lightbox-content {
+    position: relative; max-width: 90%; max-height: 85%;
+    display: flex; flex-direction: column; align-items: center;
+}
+.lightbox-content img {
+    max-width: 100%; max-height: 80vh; border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    border: 3px solid white; animation: zoomIn 0.3s ease-out;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.lightbox-content .close-btn { top: -45px; left: 50%; transform: translateX(-50%); }
+
 /* ===== GAME OVER ===== */
 .game-over-modal {
     background: linear-gradient(160deg, #1a1a3e, #2a1460);

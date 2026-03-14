@@ -106,6 +106,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- Lightbox for Image Enlargement -->
+        <div id="lightbox-overlay" class="hidden modal-overlay" onclick="closeLightbox()">
+            <div class="lightbox-content" onclick="event.stopPropagation()">
+                <button class="close-btn" onclick="closeLightbox()">✕</button>
+                <img id="lightbox-img" src="" alt="Enlarged Prize">
+            </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>

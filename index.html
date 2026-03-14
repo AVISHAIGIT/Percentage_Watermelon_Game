@@ -75,10 +75,33 @@
             <div class="shop-modal">
                 <button class="close-btn" id="close-shop">✕</button>
                 <h2 class="shop-title">🛍️ חנות הפרסים</h2>
-                <div class="points-bar-wrapper">
-                    <div class="points-label">💎 הנקודות שלך: <strong><span id="shop-points">0</span></strong></div>
+                <div class="shop-actions">
+                    <button id="gacha-btn" class="gacha-trigger-btn">🎲 מכונת המזל (500💎)</button>
                 </div>
                 <div class="rewards-grid" id="rewards-grid"></div>
+            </div>
+        </div>
+
+        <!-- Gacha Machine Modal -->
+        <div id="gacha-screen" class="hidden modal-overlay">
+            <div class="gacha-modal">
+                <button class="close-btn" id="close-gacha">✕</button>
+                <div class="gacha-machine-container">
+                    <div class="gacha-glass">
+                        <div class="gacha-balls" id="gacha-balls-container">
+                            <!-- Injected Balls -->
+                        </div>
+                    </div>
+                    <div class="gacha-body">
+                        <div class="gacha-knob" id="gacha-lever">●</div>
+                        <div class="gacha-slot"></div>
+                    </div>
+                </div>
+                <div class="gacha-info">
+                    <h3>מכונת ההפתעות</h3>
+                    <p>נסה את מזלך! אולי תזכה בפרס יחיד במינו...</p>
+                    <button class="btn primary" id="spin-gacha-btn">סובב וזכה! (500💎)</button>
+                </div>
             </div>
         </div>
 

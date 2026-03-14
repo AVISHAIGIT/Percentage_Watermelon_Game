@@ -588,5 +588,72 @@ body, html {
     from { opacity:1; } to { opacity:0; }
 }
 
+/* ===== GACHA MACHINE ===== */
+.gacha-trigger-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white; border: none; padding: 12px 20px; border-radius: 20px;
+    font-size: 1.1rem; font-weight: 900; cursor: pointer; margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4); width: 100%; transition: transform 0.2s;
+}
+.gacha-trigger-btn:hover { transform: scale(1.03); }
+
+.gacha-modal {
+    background: #2d132c; border: 4px solid #c72c41; border-radius: 30px;
+    padding: 30px; width: 85%; max-width: 380px; text-align: center; color: white;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8); animation: popIn 0.3s;
+}
+.gacha-machine-container {
+    width: 200px; height: 300px; margin: 0 auto 20px; position: relative;
+}
+.gacha-glass {
+    width: 200px; height: 200px; background: rgba(255,255,255,0.1);
+    border-radius: 50% 50% 0 0; border: 4px solid #fff; position: relative;
+    overflow: hidden; box-shadow: inset 0 0 20px rgba(255,255,255,0.3);
+}
+.gacha-balls { position: absolute; width: 100%; height: 100%; bottom: 0; }
+.gacha-ball {
+    width: 30px; height: 30px; border-radius: 50%; position: absolute;
+    box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+}
+.gacha-body {
+    width: 200px; height: 100px; background: #c72c41; border-radius: 0 0 20px 20px;
+    position: relative; border: 4px solid #fff; border-top: none;
+}
+.gacha-knob {
+    width: 60px; height: 60px; background: #edeee9; border-radius: 50%;
+    position: absolute; top: 20px; left: 70px; border: 4px solid #333;
+    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    cursor: pointer; transition: transform 0.5s;
+}
+.gacha-slot {
+    width: 60px; height: 30px; background: #333; position: absolute; bottom: 10px; left: 70px;
+    border-radius: 5px; box-shadow: inset 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.spinning .gacha-knob { transform: rotate(720deg); }
+.shaking { animation: machineShake 0.5s infinite; }
+@keyframes machineShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(-1deg); }
+    75% { transform: translateX(5px) rotate(1deg); }
+}
+
+/* ===== THEMES / LEVELS ===== */
+.theme-space {
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%) !important;
+}
+.theme-space::after {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                      radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0));
+    background-size: 200px 200px; opacity: 0.5; pointer-events: none;
+}
+.theme-jungle {
+    background: linear-gradient(to bottom, #134e5e, #71b280) !important;
+}
+.theme-jungle::before {
+    content: "🍃"; position: absolute; font-size: 100px; opacity: 0.1; bottom: 10%; right: 5%;
+}
+
 ::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 10px; }
 ::-webkit-scrollbar-thumb { background: rgba(255,215,0,0.35); border-radius: 10px; }

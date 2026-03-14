@@ -848,6 +848,8 @@ function updateScore(delta) {
         setTimeout(showChestSequence, 800);
     }
 
+    checkLevelProgress();
+
     const sp=document.getElementById('shop-points');
     if(sp)sp.innerText=currentPoints;
     checkAutoRewards();
@@ -945,7 +947,90 @@ document.getElementById('my-prizes-btn').onclick=()=>{
 };
 document.getElementById('close-prizes').onclick=()=>document.getElementById('prizes-screen').classList.add('hidden');
 
-document.getElementById('hint-btn')?.addEventListener('click', () => showHint());
+// ===== GACHA MACHINE LOGIC =====
+const GACHA_COST = 500;
+document.getElementById('gacha-btn').onclick = () => {
+    document.getElementById('gacha-screen').classList.remove('hidden');
+    initGachaBalls();
+};
+document.getElementById('close-gacha').onclick = () => document.getElementById('gacha-screen').classList.add('hidden');
+
+function initGachaBalls() {
+    const container = document.getElementById('gacha-balls-container');
+    if(!container) return;
+    container.innerHTML = '';
+    const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3', '#5edfff', '#a29bfe'];
+    for(let i=0; i<15; i++) {
+        const ball = document.createElement('div');
+        ball.className = 'gacha-ball';
+        ball.style.backgroundColor = colors[i % colors.length];
+        ball.style.left = Math.random() * 160 + 'px';
+        ball.style.bottom = Math.random() * 20 + 'px';
+        ball.style.transform = `rotate(${Math.random() * 360}deg)`;
+        container.appendChild(ball);
+    }
+}
+
+window.spinGacha = function() {
+    if(currentPoints < GACHA_COST) {
+        showQuickMsg('חסרות לך נקודות למכונה! 💎');
+        return;
+    }
+    
+    currentPoints -= GACHA_COST;
+    updateScore(0); // sync UI
+    
+    const machine = document.querySelector('.gacha-machine-container');
+    machine.classList.add('shaking', 'spinning');
+    playSound(200, 'square', 0.1);
+    
+    setTimeout(() => {
+        machine.classList.remove('shaking', 'spinning');
+        const randomReward = pick(REWARDS);
+        if(!purchasedRewards.includes(randomReward.id)) {
+            purchasedRewards.push(randomReward.id);
+            saveData();
+        }
+        
+        // Use the existing chest sequence UI to show the prize!
+        const overlay = document.getElementById('chest-overlay');
+        const closedView = document.getElementById('chest-closed-view');
+        const rewardCard = document.getElementById('chest-reward-card');
+        
+        document.getElementById('gacha-screen').classList.add('hidden');
+        overlay.classList.remove('hidden');
+        closedView.classList.add('hidden');
+        rewardCard.classList.remove('hidden');
+        
+        document.getElementById('chest-prize-img').innerText = randomReward.emoji;
+        document.getElementById('chest-prize-name').innerText = randomReward.name;
+        
+        playSuccess();
+    }, 1500);
+};
+document.getElementById('spin-gacha-btn').onclick = spinGacha;
+
+// ===== LEVEL & THEME SYSTEM =====
+function checkLevelProgress() {
+    const bg = document.getElementById('bg-layer');
+    if(!bg) return;
+    
+    if(currentScore >= 10000) {
+        if(!bg.classList.contains('theme-jungle')) {
+            bg.className = 'theme-jungle';
+            showQuickMsg('ברוכים הבאים לעולם הג׳ונגל! 🍃');
+        }
+    } else if(currentScore >= 5000) {
+        if(!bg.classList.contains('theme-space')) {
+            bg.className = 'theme-space';
+            showQuickMsg('כל הכבוד! הגעת לעולם החלל! 🚀');
+        }
+    } else {
+        if(!bg.classList.contains('theme-ocean')) {
+            bg.className = 'theme-ocean';
+        }
+    }
+}
 
 
 

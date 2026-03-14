@@ -864,6 +864,7 @@ function showQuickMsg(txt){
 
 // ===== LIGHTBOX =====
 window.openLightbox = function(src) {
+    console.log("Opening lightbox for:", src);
     const lb = document.getElementById('lightbox-overlay');
     const img = document.getElementById('lightbox-img');
     if(!lb || !img) return;
@@ -886,7 +887,7 @@ function updateShopUI(){
         const card=document.createElement('div');
         card.className='reward-card'+(owned?' purchased':'');
         
-        const visual = r.imageFile ? `<div class="reward-img" onclick="openLightbox('${r.imageFile}')"><img src="${r.imageFile}"></div>` : `<div class="reward-emoji">${r.emoji}</div>`;
+        const visual = r.imageFile ? `<div class="reward-img" onclick="window.openLightbox('${r.imageFile}')"><img src="${r.imageFile}"></div>` : `<div class="reward-emoji">${r.emoji}</div>`;
         
         card.innerHTML=`${visual}
             <div class="reward-name">${r.name.split('—')[0].trim()}</div>

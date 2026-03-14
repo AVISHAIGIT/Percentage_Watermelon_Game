@@ -958,10 +958,11 @@ function showChestSequence() {
 let chestClicks = 0;
 function handleChestClick() {
     chestClicks++;
-    const clicker = document.getElementById('chest-clicker');
-    clicker.classList.remove('chest-box-anim');
-    void clicker.offsetWidth; // trigger reflow
     clicker.classList.add('chest-box-anim');
+    
+    // Change chest color on each click
+    const randomHue = Math.floor(Math.random() * 360);
+    clicker.style.filter = `hue-rotate(${randomHue}deg) drop-shadow(0 0 15px rgba(255,215,0,0.5))`;
     
     playSound(400 + chestClicks * 100, 'square', 0.05);
 

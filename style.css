@@ -183,7 +183,12 @@ body, html {
     box-shadow: 0 4px 0 #c68a00; cursor: pointer; pointer-events: auto;
     transition: transform 0.1s; direction: rtl;
 }
+.chest-btn.secondary {
+    background: linear-gradient(135deg, #4776e6, #8e54e9);
+    color: white; box-shadow: 0 4px 0 #2a3f8f;
+}
 .chest-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #c68a00; }
+.chest-btn.secondary:active { box-shadow: 0 1px 0 #2a3f8f; }
 .hint-btn {
     background: linear-gradient(135deg, #4caf50, #81c784);
     border: none; border-radius: 22px; padding: 8px 12px;
@@ -455,6 +460,12 @@ body, html {
     display: flex; flex-direction: column; align-items: center; gap: 5px;
 }
 .reward-card.purchased { border-color: #4caf50; background: rgba(76,175,80,0.14); }
+.reward-emoji, .reward-img { 
+    width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
+    background: white; border-radius: 12px; margin-bottom: 5px; overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.reward-img img { width: 100%; height: 100%; object-fit: cover; }
 .reward-emoji { font-size: 2.3rem; }
 .reward-name {
     font-family: 'Rubik', Arial, sans-serif; font-weight: 700;
@@ -476,8 +487,27 @@ body, html {
     position: absolute; top: 12px; left: 12px;
     background: rgba(255,50,50,0.8); color: white;
     border: none; border-radius: 50%; width: 34px; height: 34px;
-    font-size: 1rem; font-weight: bold; cursor: pointer;
+    font-size: 1rem; font-weight: bold; cursor: pointer; z-index: 10;
 }
+
+/* ===== PRIZES COLLECTION ===== */
+.prizes-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 0;
+}
+.prize-item {
+    background: rgba(255,255,255,0.1); border-radius: 12px; padding: 8px;
+    display: flex; flex-direction: column; align-items: center; cursor: pointer;
+    transition: transform 0.2s; border: 1.5px solid rgba(255,255,255,0.05);
+}
+.prize-item:hover { transform: scale(1.05); background: rgba(255,255,255,0.15); }
+.prize-thumb {
+    width: 60px; height: 60px; border-radius: 8px; background: white;
+    overflow: hidden; margin-bottom: 5px; display: flex; align-items: center; justify-content: center;
+}
+.prize-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.prize-thumb.emoji { font-size: 2rem; }
+.prize-label { font-size: 0.7rem; color: #fff; font-weight: 700; text-align: center; }
+#no-prizes-msg { color: #aaa; text-align: center; padding: 30px; font-style: italic; }
 
 /* ===== GAME OVER ===== */
 .game-over-modal {

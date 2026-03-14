@@ -24,8 +24,10 @@
         <div id="ui-layer">
             <div class="top-bar">
                 <div class="score-pill">🏆 <span id="score-value">0</span></div>
-                <button id="shop-btn" class="chest-btn">🎁 פרסים</button>
-                <button id="hint-btn" class="hint-btn-top">💡 רמז (-50 CP)</button>
+                <div class="top-buttons">
+                    <button id="my-prizes-btn" class="chest-btn secondary">💎 האוסף שלי</button>
+                    <button id="shop-btn" class="chest-btn">🎁 חנות</button>
+                </div>
             </div>
 
             <div id="question-banner">
@@ -77,6 +79,18 @@
                     <div class="points-label">💎 הנקודות שלך: <strong><span id="shop-points">0</span></strong></div>
                 </div>
                 <div class="rewards-grid" id="rewards-grid"></div>
+            </div>
+        </div>
+
+        <!-- My Prizes Collection -->
+        <div id="prizes-screen" class="hidden modal-overlay">
+            <div class="shop-modal prizes-collection">
+                <button class="close-btn" id="close-prizes">✕</button>
+                <h2 class="shop-title">✨ האוסף היוקרתי שלי</h2>
+                <div class="prizes-grid" id="prizes-grid">
+                    <!-- Injected by JS -->
+                </div>
+                <div id="no-prizes-msg" class="hidden">עדיין לא קטפת פרסים... שחק וזכה! 🌊</div>
             </div>
         </div>
 

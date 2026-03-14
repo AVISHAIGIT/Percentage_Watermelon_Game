@@ -69,20 +69,20 @@ function lighten(hex, a) {
 
 // ===== REWARDS — types: jewelry, vacation, funny, tech, food, normal =====
 const REWARDS = [
-    // --- Ronit Yam Jewelry (with generated images) ---
-    { id:'ry_necklace',  emoji:'🐚', imageFile:'necklace.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'שרשרת צדף של רונית ים — כסף 925 עם תלית צדף',          price:1000, story:'הצדף הזה שמע פעם את כל הסודות של הים, אבל הוא מבטיח לא לספר אם תענדי אותו יפה.' },
-    { id:'ry_bracelet',  emoji:'📿', imageFile:'bracelet.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'צמיד חרוזי ים של רונית ים — כסף וצדפות צבעוניות',      price:800,  story:'כל חרוז כאן נצבע בנשיקה של דג זהב (אל תגלי לאף אחד).'  },
-    { id:'ry_ring',      emoji:'💍', imageFile:'ring.png',      type:'jewelry',  title:'טבעת יוקרתית!',      name:'טבעת כסף 925 עם ספיר ים — עיצוב אישי מרונית ים',       price:1800, story:'הטבעת הזו כל כך נוצצת שהיא יכולה להחליף את הפנס של האייפון שלך.' },
-    { id:'ry_earrings',  emoji:'💎', imageFile:'earrings.png',  type:'jewelry',  title:'עגילים מהמם!',       name:'עגילי ים מרונית ים — כסף וחרוז ים כחול',               price:1200, story:'כשאת עונדת אותם, את יכולה לשמוע את הגלים אפילו באמצע רחוב הרצל.' },
-    // --- More Jewelry ---
-    { id:'charm',        emoji:'🐚', img:'🐚✨🐚',  type:'jewelry',  title:'תכשיט שייך לך!',   name:'קסם צדף — תליון צדף לתיק או מפתח',                     price:400,  story:'הקסם הזה מבטיח שהמפתחות שלך לעולם לא יטבעו (במובן המטאפורי).'  },
-    { id:'bracelet2',    emoji:'💛', img:'💛💍💛',  type:'jewelry',  title:'מתנה זהובה!',      name:'צמיד אהבה זהוב — שרשרת דקה עם לב גולד-פילד',          price:850,  story:'לב קטן שעושה רעש גדול של אהבה בכל פרויקט.'  },
-    { id:'anklet',       emoji:'🦶', img:'🦶🌊🦶',  type:'jewelry',  title:'אלגנטי!',          name:'צמיד קרסול צדף ים — מושלם לקיץ',                       price:650,  story:'זה צמיד הקרסול שיגרום לכל פינגווין לקנא בך.'  },
+    // --- Ronit Yam Jewelry (with real images) ---
+    { id:'ry_necklace',  emoji:'🐚', imageFile:'assets/rewards/necklace.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'שרשרת צדף של רונית ים',          price:1000, story:'הצדף הזה שמע פעם את כל הסודות של הים, אבל הוא מבטיח לא לספר אם תענדי אותו יפה.' },
+    { id:'ry_bracelet',  emoji:'📿', imageFile:'assets/rewards/bracelet.png',  type:'jewelry',  title:'תכשיט יוקרתי!',      name:'צמיד חרוזי ים של רונית ים',      price:800,  story:'כל חרוז כאן נצבע בנשיקה של דג זהב (אל תגלי לאף אחד).'  },
+    { id:'ry_ring',      emoji:'💍', imageFile:'assets/rewards/ring.png',      type:'jewelry',  title:'טבעת יוקרתית!',      name:'טבעת כסף 925 עם ספיר ים',       price:1800, story:'הטבעת הזו כל כך נוצצת שהיא יכולה להחליף את הפנס של האייפון שלך.' },
+    { id:'ry_earrings',  emoji:'💎', imageFile:'assets/rewards/earrings.png',  type:'jewelry',  title:'עגילים מהמם!',       name:'עגילי ים מרונית ים',               price:1200, story:'כשאת עונדת אותם, את יכולה לשמוע את הגלים אפילו באמצע רחוב הרצל.' },
+    // --- More Jewelry (Fallbacks) ---
+    { id:'charm',        emoji:'🐚', img:'🐚✨🐚',  type:'jewelry',  title:'תכשיט שייך לך!',   name:'קסם צדף — תליון צדף',                     price:400,  story:'הקסם הזה מבטיח שהמפתחות שלך לעולם לא יטבעו.'  },
+    { id:'bracelet2',    emoji:'💛', img:'💛💍💛',  type:'jewelry',  title:'מתנה זהובה!',      name:'צמיד אהבה זהוב',          price:850,  story:'לב קטן שעושה רעש גדול של אהבה בכל פרויקט.'  },
+    { id:'anklet',       emoji:'🦶', img:'🦶🌊🦶',  type:'jewelry',  title:'אלגנטי!',          name:'צמיד קרסול צדף ים',                       price:650,  story:'זה צמיד הקרסול שיגרום לכל פינגווין לקנא בך.'  },
     { id:'charm2',       emoji:'⚓', img:'⚓🌊⚓',  type:'jewelry',  title:'בייבי קיוט!',      name:'תכשיט עוגן כסף — קסם ימי בעיצוב ידני',                 price:550,  story:'עוגן קטן שיזכיר לך שתמיד יש לאן לחזור הביתה.'                 },
     { id:'hoop_earring', emoji:'🌙', img:'🌙💫🌙',  type:'jewelry',  title:'יפהפה!',           name:'עגילי חישוק כסף עם חרוז ירח — רונית ים',               price:960,  story:'הירח מביט בך מהאוזן ושואל: "מתי הולכים לישון?"'               },
     // --- Stickers & Small ---
     { id:'hug',          emoji:'🤗', img:'🤗😊🤗',  type:'normal',   title:'וואו!',            name:'חיבוק וירטואלי חינמי מהמשחק!',                         price:50,   story:'חיבוק חם כל כך שהוא יכול להמיס קרחונים (אבל לא את של ארטיק מסטיק).'   },
-    { id:'sticker1',     emoji:'🌊', img:'🌊🐚🌊',  type:'normal',   title:'יפה!',             name:'מדבקת גלים של רונית ים — על נייר פרמיום',              price:200,  story:'מדביקים את זה על הלפטופ ופתאום מרגישים בסיני.'              },
+    { id:'sticker1',     emoji:'🌊', img:'🌊🐚🌊',  type:'normal',   title:'מדבקת גלים!',     name:'מדבקת גלים של רונית ים — על נייר פרמיום',              price:200,  story:'מדביקים את זה על הלפטופ ופתאום מרגישים בסיני.'              },
     { id:'sticker2',     emoji:'🌸', img:'🌸🌺🌸',  type:'normal',   title:'מתוק!',            name:'מדבקת פרח צבעוני — גינה שלמה על מדבקה',               price:300,  story:'פרח שלא צריך להשקות אותו, רק לאהוב.'               },
     // --- Vacation & Experiences ---
     { id:'eilat',        emoji:'🏖️', img:'🏖️✈️🏖️', type:'vacation', title:'חופשה באילת!!',   name:'כרטיס טיסה לאילת הלוך ושוב + לילה במלון! ☀️',          price:5000, story:'אילת זה החיים... ארטיק מסטיק... זה החיים.. ' },
@@ -90,12 +90,12 @@ const REWARDS = [
     { id:'spa',          emoji:'🛁', img:'🛁🧖🛁',  type:'vacation', title:'יום כיף!',         name:'יום ספא שלם עם שרה השכנה — מסאז\'ים ומיטב הטיפולים',  price:2000, story:'שרה השכנה מבטיחה מסאז\' שישחרר לך גם את המחשבות על מבחנים.' },
     { id:'dayoff',       emoji:'😴', img:'😴☀️😴',  type:'vacation', title:'יום חופש!',        name:'יום חופש שלם עם אמא — שופינג + ארוחה + סרט! 🎬',      price:1200, story:'אמא אמרה שהיום הולכים ללונה פארק, אבל בסוף מצאת את עצמך עוזרת לה לסדר את המטבח 4 שעות.' },
     // --- VIP Concerts ---
-    { id:'noa',          emoji:'🦄', img:'🦄🎤🦄',  type:'vacation', title:'VIP לנועה קירל!', name:'כרטיס VIP לנועה קירל — גרינרום + מפגש אישי! 🎤',       price:7000, story:'נועה קירל ביקשה למסור שאת הפנתרה האמיתית של המשחק הזה.' },
+    { id:'noa',          emoji:'🦄', img:'🦄🎤🦄',  type:'vacation', title:'VIP לנועה קירל!', name:'כרטיס VIP לנועה קירל',       price:7000, story:'נועה קירל ביקשה למסור שאת הפנתרה האמיתית של המשחק הזה.' },
     { id:'eyal',         emoji:'🎤', img:'🎤🌟🎤',  type:'vacation', title:'VIP לאייל גולן!', name:'כרטיס VIP לאייל גולן — מושב קדמי + חתימה! 🌟',         price:7000, story:'אייל גולן מחכה לך עם המיקרופון הכי מוזהב בשורה הראשונה.'         },
     { id:'omer',         emoji:'🎫', img:'🎫🎵🎫',  type:'vacation', title:'VIP לעומר אדם!',  name:'כרטיס VIP לעומר אדם — ראשית שורה + תמונה! 🎵',         price:7000, story:'עומר אדם כבר מכין את השירים שאת הכי אוהבת לרקוד.'         },
     // --- Tech ---
-    { id:'airpods',      emoji:'🎧', img:'🎧🍎🎧',  type:'tech',     title:'Amazon Prime!',   name:'AirPods Pro 2nd gen — ביטול רעש מקצועי, ORIGINAL! 🎧',  price:5000, story:'ניסית להפעיל ביטול רעשים, פתאום הכל היה שקט כל כך ששמעת את המחשבות של החתול שלך.' },
-    { id:'iphone',       emoji:'📱', img:'📱🍎📱',  type:'tech',     title:'סלולרי חדש!',     name:'iPhone 16 Pro 256GB — אחריות מלאה, כל הצבעים! 📱',      price:12000, story:'האייפון הזה כל כך חכם שהוא כבר פתר בעצמו את השאלה הבאה במשחק.' },
+    { id:'airpods',      emoji:'🎧', img:'🎧🍎🎧',  type:'tech',     title:'Amazon Prime!',   name:'AirPods Pro 2nd gen',  price:5000, story:'ניסית להפעיל ביטול רעשים, פתאום הכל היה שקט כל כך.' },
+    { id:'iphone',       emoji:'📱', img:'📱🍎📱',  type:'tech',     title:'סלולרי חדש!',     name:'iPhone 16 Pro',      price:12000, story:'האייפון הזה כל כך חכם שהוא כבר פתר בעצמו את השאלה הבאה.' },
     { id:'ps5',          emoji:'🎮', img:'🎮🕹️🎮',  type:'tech',     title:'PS5 חדש!!',       name:'PlayStation 5 Slim + 2 שלטים — חדש בקרטון! 🎮',        price:12000, story:'השלט רטט כה חזק שחשבת שרעידת אדמה קטנה הגיעה לסלון.' },
     // --- Funny ---
     { id:'grandmaRY',    emoji:'👵', img:'👵😂👵',  type:'funny',    title:'סבתא של רונית!',  name:'בילוי מלא עם סבתא של רונית ים — עוגה ביתי + סיפורים', price:100,  story:'עוגה ביתית וסיפורים על איך פעם אבטיחים היו מרובעים.'  },
@@ -798,9 +798,10 @@ window.clickChest=function(){
         
         const imgEl = document.getElementById('chest-prize-img');
         if (rw.imageFile) {
-            imgEl.innerHTML = `<img src="images/${rw.imageFile}" class="prize-photo">`;
+            imgEl.innerHTML = `<img src="${rw.imageFile}" class="prize-photo">`;
         } else {
             imgEl.innerText = rw.img || rw.emoji;
+            imgEl.style.fontSize = '5.5rem';
         }
         
         document.getElementById('chest-prize-name').innerText = rw.name;
@@ -880,23 +881,64 @@ function showQuickMsg(txt){
     popupContainer.appendChild(el);setTimeout(()=>el.remove(),3000);
 }
 
-// ===== SHOP =====
+// ===== SHOP & PRIZES =====
 function updateShopUI(){
-    document.getElementById('shop-points').innerText=currentPoints;
-    const grid=document.getElementById('rewards-grid');grid.innerHTML='';
+    const ptsEl = document.getElementById('shop-points');
+    if(ptsEl) ptsEl.innerText = currentPoints;
+    const grid=document.getElementById('rewards-grid');
+    if(!grid) return;
+    grid.innerHTML='';
     REWARDS.forEach(r=>{
         const owned=purchasedRewards.includes(r.id);
         const card=document.createElement('div');
         card.className='reward-card'+(owned?' purchased':'');
-        card.innerHTML=`<div class="reward-emoji">${r.emoji}</div>
+        
+        const visual = r.imageFile ? `<div class="reward-img"><img src="${r.imageFile}"></div>` : `<div class="reward-emoji">${r.emoji}</div>`;
+        
+        card.innerHTML=`${visual}
             <div class="reward-name">${r.name.split('—')[0].trim()}</div>
             <div class="reward-price">${owned?'✅ שלך!':'💎 '+r.price}</div>
             ${!owned?`<button class="btn buy" onclick="buyReward('${r.id}')">קנה 🛒</button>`:''}`;
         grid.appendChild(card);
     });
 }
-document.getElementById('shop-btn').onclick=()=>{document.getElementById('shop-screen').classList.remove('hidden');updateShopUI();};
+
+function updatePrizesUI(){
+    const grid = document.getElementById('prizes-grid');
+    if(!grid) return;
+    grid.innerHTML='';
+    
+    const myPrizes = REWARDS.filter(r => purchasedRewards.includes(r.id));
+    const noPrizes = document.getElementById('no-prizes-msg');
+    
+    if(myPrizes.length === 0) {
+        if(noPrizes) noPrizes.classList.remove('hidden');
+        return;
+    }
+    if(noPrizes) noPrizes.classList.add('hidden');
+    
+    myPrizes.forEach(r => {
+        const item = document.createElement('div');
+        item.className = 'prize-item';
+        const visual = r.imageFile ? `<div class="prize-thumb"><img src="${r.imageFile}"></div>` : `<div class="prize-thumb emoji">${r.emoji}</div>`;
+        item.innerHTML = `${visual}<div class="prize-label">${r.name.split('—')[0].trim()}</div>`;
+        item.onclick = () => { openChest(r); document.getElementById('prizes-screen').classList.add('hidden'); };
+        grid.appendChild(item);
+    });
+}
+
+document.getElementById('shop-btn').onclick=()=>{
+    document.getElementById('shop-screen').classList.remove('hidden');
+    updateShopUI();
+};
 document.getElementById('close-shop').onclick=()=>document.getElementById('shop-screen').classList.add('hidden');
+
+document.getElementById('my-prizes-btn').onclick=()=>{
+    document.getElementById('prizes-screen').classList.remove('hidden');
+    updatePrizesUI();
+};
+document.getElementById('close-prizes').onclick=()=>document.getElementById('prizes-screen').classList.add('hidden');
+
 document.getElementById('hint-btn')?.addEventListener('click', () => showHint());
 
 

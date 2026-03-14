@@ -95,6 +95,24 @@ const REWARDS = [
     { id:'monopoly',    emoji:'💸', imageFile:'assets/rewards/monopoly.png',  type:'funny',    title:'עושר מיידי!',    name:'1000 ש"ח של מונופול', price:10,   story:'ניסית לשלם עם זה במכולת, המוכר שאל אם אתה מחפש את דרך יפו.'   },
     { id:'scooter',      emoji:'🛴', imageFile:'assets/rewards/scooter.png',   type:'funny',    title:'נהג חדש!',       name:'שיעור נהיגה על קורקינט',    price:150,  story:'הרוח בשערות, הברקסים לא עובדים, והחיוך בשמיים.'    },
     { id:'sticker1',     emoji:'🌊', imageFile:'assets/rewards/sticker_waves.png', type:'normal', title:'מדבקת גלים!',     name:'מדבקת גלים של רונית ים',              price:200,  story:'מדביקים את זה על הלפטופ ופתאום מרגישים בסיני.'              },
+    // --- New Requested Rewards ---
+    { id:'ice_cream_meatballs', emoji:'🍨🥩', type:'funny', title:'הפתעת המקפיא!', name:'קופסת גלידה עם קציצות בפנים', price:200, story:'האכזבה הכי גדולה בילדות, עכשיו בגרסת הפרס היקר.' },
+    { id:'shoko_spill', emoji:'🍫👕', type:'funny', title:'אופס!', name:'שקית שוקו שנשפכת על החולצה', price:30, story:'זה לא כתם, זה עיצוב אבסטרקט של יוטבתה.' },
+    { id:'dry_bamba', emoji:'🥜🌵', type:'funny', title:'יבש מתמיד!', name:'שקית במבה יבשה מאוד', price:150, story:'כל כך יבש שצריך ליטר מים אחרי כל ביס.' },
+    { id:'otello_4kg', emoji:'🍦⚖️', type:'funny', title:'חלומה של כל אחת!', name:'4 קילו גלידה באוטלו', price:4000, story:'4 קילו של אושר טהור, או כאב בטן של שבוע.' },
+    { id:'buza_galilee', emoji:'🍨🏞️', type:'funny', title:'טעם הצפון!', name:'גלידה בוזה מהגליל', price:1500, story:'טעם של הרים, נחלים וגלידה משובחת באמת.' },
+    { id:'whatsapp_bot', emoji:'🤖📱', type:'tech', title:'חיים קלים!', name:'רובוט שעונה לוואטסאפ במקומך', price:5000, story:'הוא עונה "חחח" ו"וואלה" בדיוק בזמן הנכון.' },
+];
+
+const BONUS_JOKES = [
+    "למה אבטיח הלך לפסיכולוג? כי הוא הרגיש שהוא מתפוצץ מבפנים. 🍉",
+    "איך קוראים לילד שמתמחה באחוזים? אחוזון קטן. 📈",
+    "מה אומר שוקו כשהוא רואה במבה? 'אל תהיה יבש, בוא נטבול!' 🍫",
+    "למה המתמטיקאי תמיד רעב? כי הוא כל היום חושב על פאי. 🥧",
+    "איך קוראים לדג שמעולה בחשבון? דג-סימאל. 🐟",
+    "מה אמר ה-0 ל-8? 'חגורה יפה!' 📉",
+    "למה אחוזים תמיד רצים למרחקים ארוכים? כדי להגיע למאה. 🏁",
+    "איך קוראים לאייפון שמשחק באבטיחים? איי-פון-טזיה. 📱"
 ];
 
 const TEASE_MSGS = [

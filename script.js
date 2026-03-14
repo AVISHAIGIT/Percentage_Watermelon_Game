@@ -855,6 +855,27 @@ function updateScore(delta) {
     if(sp)sp.innerText=currentPoints;
     checkAutoRewards();
 }
+
+function checkElinorPraise(old, cur) {
+    const step = 200;
+    if (Math.floor(cur / step) > Math.floor(old / step)) {
+        showElinorPraise();
+    }
+}
+
+function showElinorPraise() {
+    const popup = document.getElementById('elinor-praise-popup');
+    if (!popup) return;
+    popup.classList.add('show');
+    popup.classList.remove('hidden');
+    playSuccess();
+    
+    setTimeout(() => {
+        popup.classList.remove('show');
+        setTimeout(() => popup.classList.add('hidden'), 500);
+    }, 2000);
+}
+
 function checkAutoRewards(){
     for(const t of AUTO_REWARDS){
         if(currentPoints>=t.pts&&!purchasedRewards.includes(t.id)){grantReward(t.id,true);break;}
